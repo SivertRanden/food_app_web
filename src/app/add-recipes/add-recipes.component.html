@@ -1,0 +1,53 @@
+<h1>Add recipe</h1>
+<div class="add-recipe-container">
+  <div class="input-row">
+    <input class="input-row-input" placeholder="Name">
+  </div>
+  <div class="input-row">
+    <textarea cols="50" class="input-row-textarea" placeholder="Description"></textarea>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Ingredients:</p>
+  </div>
+  <div class="input-row">
+    <input class="input-row-input" placeholder="Name">
+    <span class="input-row-horizontal-divider"></span>
+    <input class="input-row-input" placeholder="Amount">
+    <button (click)="addRow('ingredient')"class="input-row-button-round">+</button>
+  </div>
+  <div *ngFor="let counter of ingredientRowCounter; let i = index" class="input-row" id="ingredients">
+    <input class="input-row-input" placeholder="Name">
+    <span class="input-row-horizontal-divider"></span>
+    <input class="input-row-input" placeholder="Amount">
+    <button (click)="removeRow('ingredient')"class="input-row-button-round">-</button>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Steps:</p>
+  </div>
+  <div class="input-row">
+    <span class="input-row-step-counter">1: </span>
+    <input class="input-row-input" placeholder="Step">
+    <button (click)="addRow('step')"class="input-row-button-round">+</button>
+    </div>
+  <div *ngFor="let counter of stepRowCounter; let i = index" class="input-row" id="ingredients">
+    <span class="input-row-step-counter">{{i+2}}:</span>
+    <input class="input-row-input" placeholder="Step">
+    <button (click)="removeRow('step')"class="input-row-button-round">-</button>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Allergens:</p>
+  </div>
+  <div class="input-row">
+    <span *ngFor="let allergen of allergens" (click)="handleToggleClick($event, 'allergen')" class="input-row-toggle-box">{{allergen}}</span>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Tags:</p>
+  </div>
+  <div class="input-row">
+    <span *ngFor="let tag of tags" (click)="handleToggleClick($event, 'tag')" class="input-row-toggle-box">{{tag}}</span>
+  </div>
+  <div class="input-row">
+    <button class="button outline">Cancel</button>
+    <button class="button">Add receipe</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+    font-family: 'Roboto';
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.button {
+    border-radius: 5px;
+    border: none;
+    background-color: $brand-primary;
+    padding: 7px;
+    text-align: center;
+    font-size: $font-normal;
+}
+
+.outline {
+    background-color: white;
+    border: 2px solid grey;
+}
