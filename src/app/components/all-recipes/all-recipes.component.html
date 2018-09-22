@@ -1,0 +1,10 @@
+<div class="all-recipes-container">
+  <h1 class="main-header">All recipes</h1>
+  <div *ngIf="loading" class="loader-container"><div class="loader"></div></div>
+  <div *ngFor="let recipe of recipes | async" class="expansion-container">
+    <app-recipe-details [recipe]="recipe"></app-recipe-details>
+  </div>
+  <a routerLink="/add-recipe">
+    <button class="button">Add recipe</button>
+  </a>
+</div>

@@ -1,0 +1,45 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{recipe.name}}</mat-panel-title>
+    <mat-panel-description>{{recipe.mealType}}</mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="recipe-details-container">
+    <p>{{recipe.description}}</p>
+    <h3 class="recipe-details-helptext">Ingredients:</h3>
+    <ul class="recipe-details-list">
+      <li *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.amount}} {{ingredient.name}}
+      </li>
+    </ul>
+    <h3 class="recipe-details-helptext">Steps:</h3>
+    <ol class="recipe-details-list">
+      <li *ngFor="let step of recipe.steps">
+        {{step}}
+      </li>
+    </ol>
+    <h3 class="recipe-details-helptext">Nutrients:</h3>
+    <table>
+      <tr>
+        <th *ngFor="let nutrient of recipe.nutrients">
+          {{nutrient.name}}
+        </th>
+      </tr>
+      <tr>
+        <td *ngFor="let nutrient of recipe.nutrients">
+          {{nutrient.amount}}
+        </td>
+      </tr>
+    </table>
+    <div class="recipe-details-allergen-container"><h3 class="recipe-details-helptext">Allergens:&nbsp;</h3>
+      <span *ngFor="let allergen of recipe.allergens; let i = index;">
+        {{allergen}}<span *ngIf="i !== recipe.allergens.length-1">,&nbsp;</span>
+      </span>
+    </div>
+    <div class="recipe-details-allergen-container"><h3 class="recipe-details-helptext">Tags:&nbsp;</h3>
+      <span *ngFor="let tag of recipe.tags; let i = index;">
+        {{tag}}<span *ngIf="i !== recipe.tags.length-1">,&nbsp;</span>
+      </span>
+    </div>
+    <button (click)="onDeleteClick()" class="button">Delete recipe</button>
+  </div>
+</mat-expansion-panel>

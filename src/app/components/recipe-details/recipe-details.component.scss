@@ -1,0 +1,36 @@
+@import "../../../variables.scss";
+
+.recipe-details {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        font-size: $font-normal;
+    }
+    
+    &-container > p {
+    }
+    
+    &-list {
+    }
+
+    &-helptext {
+        font-weight: bold;
+        font-size: $font-normal;
+    }
+
+    &-allergen-container {
+        display: flex;
+        span {
+            margin-top: 21px;
+        }
+    }
+}
+
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+    font-size: $font-large
+}
+
+.mat-expansion-panel {
+    min-width: 500px;
+}

@@ -2,8 +2,18 @@
 @import "variables.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+//APP WIDE STYLES
+
 * {
     font-family: 'Roboto';
+}
+
+body {
+    background-color: #FAFAFA;
+}
+
+.main-header {
+    color: $brand-secondary;
 }
 
 .app-container {
@@ -14,14 +24,59 @@
 
 .button {
     border-radius: 5px;
-    border: none;
+    border: 2px solid transparent;
     background-color: $brand-primary;
     padding: 7px;
     text-align: center;
     font-size: $font-normal;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: $brand-primary-accent;
+    border: 2px solid $brand-primary
 }
 
 .outline {
     background-color: white;
-    border: 2px solid grey;
+    border: 2px solid $brand-secondary;
+}
+
+.outline:hover {
+    background-color: $brand-secondary-accent;
+    border: 2px solid transparent;
+}
+
+.loader {
+    border: 16px solid transparent;
+    border-radius: 50%;
+    border-top: 16px solid $brand-primary;
+    width: 100px;
+    height: 100px;
+    animation: spin 1.5s  infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-container {
+    position: absolute;
+    z-index: 3;
+    align-self: center;
+    margin-top: 15%;
+}
+
+.loader-container--top {
+    align-self: flex-start;
+  }
+  
+.loader-container--bottom {
+    align-self: flex-end;
+}
+
+.loading {
+    opacity: 0.5;
 }

@@ -1,0 +1,67 @@
+
+<div class="add-recipe-container" [class.loading]="loading">
+  <h1 class="main-header">Add recipe</h1>
+  <div *ngIf="loading" class="loader-container"><div class="loader"></div></div>
+  <div class="input-row">
+    <input [(ngModel)]="newRecipe.name" class="input-row-input" placeholder="Name">
+  </div>
+  <div class="input-row">
+    <textarea [(ngModel)]="newRecipe.description" cols="50" class="input-row-textarea" placeholder="Description"></textarea>
+  </div>
+  <div class="input-row">
+    <select [(ngModel)]="newRecipe.mealType" class="input-row-select">
+      <option selected disabled>Choose meal type</option>
+      <option value="Breakfast">Breakfast</option>
+      <option value="Lunch">Lunch</option>
+      <option value="Dinner">Dinner</option>
+      <option value="Snack">Snack</option>
+    </select>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Ingredients:</p>
+  </div>
+  <div *ngFor="let ingredient of newRecipe.ingredients; let i = index" class="input-row" id="ingredients">
+    <input [(ngModel)]="newRecipe.ingredients[i].name" class="input-row-input" placeholder="Name">
+    <span class="input-row-horizontal-divider"></span>
+    <input [(ngModel)]="newRecipe.ingredients[i].amount" class="input-row-input" placeholder="Amount">
+    <div *ngIf="i===0"><button (click)="addRow('ingredient')"class="input-row-button-round">+</button></div>
+    <div *ngIf="i!==0"><button (click)="removeRow('ingredient')"class="input-row-button-round">-</button></div>
+  </div>
+  <div class="input-row">
+    <span class="input-row-nutrient-text">Carbohydrates</span>
+    <span class="input-row-nutrient-text">Protein</span>
+    <span class="input-row-nutrient-text">Fat</span>
+  </div>
+  <div class="input-row">
+    <input type="number" [(ngModel)]="newRecipe.nutrients[0].amount" class="input-row-input" placeholder="Carbs">
+    <span class="input-row-horizontal-divider"></span>
+    <input [(ngModel)]="newRecipe.nutrients[1].amount" class="input-row-input" placeholder="Protein">
+    <span class="input-row-horizontal-divider"></span>
+    <input [(ngModel)]="newRecipe.nutrients[2].amount" class="input-row-input" placeholder="Fat">
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Steps:</p>
+  </div>
+  <div *ngFor="let step of newRecipe.steps; let i = index; trackBy:trackByFn" class="input-row" id="steps">
+    <span class="input-row-step-counter">{{i+1}}:</span>
+    <input [(ngModel)]="newRecipe.steps[i]" class="input-row-input" placeholder="Step">
+    <div *ngIf="i===0"><button (click)="addRow('step')"class="input-row-button-round">+</button></div>
+    <div *ngIf="i!==0"><button (click)="removeRow('step')"class="input-row-button-round">-</button></div>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Allergens:</p>
+  </div>
+  <div class="input-row">
+    <span *ngFor="let allergen of allergens" (click)="handleToggleClick($event, 'allergen')" class="input-row-toggle-box">{{allergen}}</span>
+  </div>
+  <div class="input-row">
+    <p class="input-row-helptext">Tags:</p>
+  </div>
+  <div class="input-row">
+    <span *ngFor="let tag of tags" (click)="handleToggleClick($event, 'tag')" class="input-row-toggle-box">{{tag}}</span>
+  </div>
+  <div class="input-row">
+    <button (click)="onCancelClick()" class="button outline">Cancel</button>
+    <button (click)="onAddRecipeClick()" class="button">Add receipe</button>
+  </div>
+</div>
